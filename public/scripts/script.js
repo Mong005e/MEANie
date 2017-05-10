@@ -19,12 +19,12 @@ myApp.controller( 'WhereMyPeeps', function( $http ){
   };// end addRecord
 
   vm.getRecords = function(){
-    $.http({
+    $http({
       method: 'GET',
       url: '/getRecords',
     }).then( function( response ){
-      vm.allTheRecords = response;
-      console.log( vm.allTheRecords );
+      vm.allTheRecords = response.data;
+      console.log('this is vm.allTheRecords:', vm.allTheRecords );
     });
     // , function myError( response ){
     //   console.log( response.statusText );

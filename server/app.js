@@ -31,6 +31,7 @@ app.get( '/', function( req, res ){
 app.get( '/getRecords', function( req, res ){
 // get and send back all the things
   ourModel.find().then( function( data ){
+    console.log('this is data:', data);
     res.send( data );
   });
 });

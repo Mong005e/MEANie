@@ -4,21 +4,24 @@ var path = require( 'path' );
 var bodyParser = require( 'body-parser' );
 var mongoose = require( 'mongoose' );
 // 27017 is default mongo port
-//mongoose stuff
-mongoose.connect( 'localhost:27017/meanie' );
-var ourModel = mongoose.model( 'ourModel', ourSchema );
+
 //uses
 app.use( express.static( 'public' ) );
+app.use (bodyParser.urlencoded ({extended:true} ) );
 app.use( bodyParser.json() );
 //spin up server
 app.listen( 8080, 'localhost', function( req, res ){
 console.log( 'listening on 8080' );
 });
 
-var ourSchema = new  mongoose.Schema({
+//mongoose stuff
+mongoose.connect( 'localhost:27017/meanie' );
+var ourSchema = mongoose.Schema({
   name: String,
   location: String
-  });
+});//end Schema
+//model
+var ourModel = mongoose.model( 'ourModel', ourSchema );
 
 
 app.get( '/', function( req, res ){

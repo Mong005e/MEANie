@@ -1,6 +1,6 @@
 var myApp=angular.module( 'myApp', [] );
 
-myApp.controller( 'WhereMyPeeps', [ '$http', function( $http ){
+myApp.controller( 'WhereMyPeeps', function( $http ){
   var vm = this;
   //add record function
   vm.addRecord = function(){
@@ -25,8 +25,9 @@ myApp.controller( 'WhereMyPeeps', [ '$http', function( $http ){
     }).then( function( response ){
       vm.allTheRecords = response;
       console.log( vm.allTheRecords );
-    }), function myError( response ){
-      console.log( response.statusText );
-    }); //end error
+    });
+    // , function myError( response ){
+    //   console.log( response.statusText );
+    // }); //end error
   };//end getRecords
-}]);//end controller
+});//end controller
